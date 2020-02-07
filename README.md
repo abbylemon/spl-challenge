@@ -1,2 +1,2 @@
-# spl-challenge
+# sql-challenge
 putting legacy data into a structured database
