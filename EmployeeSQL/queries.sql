@@ -16,10 +16,12 @@ where "hire_date" like '1986%';
 --department number, department name, the manager's employee number, 
 --last name, first name, and start and end employment dates.
 
-select d."dept_no", d."dept_name", e."emp_no", e."last_name", e."first_name", de."from_date", de."to_date" 
-from "departments" d
+select dm."dept_no", d."dept_name", e."emp_no", e."last_name", e."first_name", de."from_date", de."to_date" 
+from "dept_manager" dm
+left join "departments" d
+on dm."dept_no" = d."dept_no"
 left join "dept_emp" de
-on d."dept_no" = de."dept_no"
+on dm."emp_no" = de."emp_no"
 left join "employees" e
 on de."emp_no" = e."emp_no";
 
@@ -71,4 +73,5 @@ count("last_name") as number_of_employees_with_last_name
 from "employees"
 group by "last_name"
 order by number_of_employees_with_last_name DESC;
+
 
